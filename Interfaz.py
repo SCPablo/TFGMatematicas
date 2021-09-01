@@ -31,7 +31,7 @@ def interfazCreation():
     
     #Creación de la zona de número de puntos
     labelNumPun = Label(window, text = "Introduce el número de puntos \n" +
-                        "(Mínimo 50, Máximo 1000)")
+                        "(Mínimo 50, Máximo 100)")
     labelNumPun.place(relx = 0.1, rely = 0.3)
     numPointsEntry = Entry(window, width = 10)
     numPointsEntry.place(relx = 0.1, rely = 0.5, width = 100 , height = 30)

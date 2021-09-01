@@ -7,7 +7,7 @@ Created on Sun Aug  1 20:47:09 2021
 """
 
 from sklearn.cluster import MeanShift
-from silhoutte import scoreFunction
+from silhoutte import scoreFunction, f1_score
 from time import time
 from plotResults import plotResultsGrafics, plotResultTable, reduceDimension
 import numpy as np
@@ -45,11 +45,16 @@ def rMeanShift1(datos):
     print("MEAN SHIFT")
    
      
-    clustering = MeanShift(cluster_all = True)
+    clustering = MeanShift(cluster_all = False)
     t0 = time()
     clustering = clustering.fit(datos.iloc[:,3:])
     sil_sco = metrics.silhouette_score(datos.iloc[:,3:], clustering.labels_)
     db_sco = metrics.davies_bouldin_score(datos.iloc[:,3:], clustering.labels_)
+    
+    
+    
+    valorF = f1_score(datos.iloc[:,2:], clustering.labels_)
+    
     
     print("El valor óptimo del parámetro amplitud es: " + str(
         clustering.get_params()["bandwidth"]))
@@ -61,6 +66,8 @@ def rMeanShift1(datos):
     print("\n\n\n")
     plotResultTable(datos, clustering, "MeanShift ")
     
+    return valorF
+    
     
     
     
@@ -68,8 +75,10 @@ def rMeanShift2(datos):
     
     print("MEAN SHIFT")
    
+    #sil_sco, db_sco, n_clus = scoreFunction(
+     #     datos, "MeanShift", MeanShift, 0.8) 
      
-    clustering = MeanShift(bandwidth=2, cluster_all = True)
+    clustering = MeanShift(bandwidth = 1.5, cluster_all=False)
     t0 = time()
     clustering = clustering.fit(datos)
     sil_sco = metrics.silhouette_score(datos, clustering.labels_)
@@ -84,4 +93,5 @@ def rMeanShift2(datos):
     print("Su coeficiente de Davies Boulding es: " + str(db_sco))
     print("\n\n\n")
     
+    datos['cluster'] = clustering.labels_
     reduceDimension(datos, clustering.labels_, "MEANSHIFT")

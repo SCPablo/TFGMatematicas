@@ -19,12 +19,12 @@ import csv
 Funcion encargada de elaborar el experimento. Crea la interfaz,
 luego el conjunto de puntos y luego los agrupa
 '''
-def experiments():
+def experiment():
     information = interfazCreation()
     
     while((not (information[0].isdigit())) or (int(information[0]) < 50) or 
           (int(information[0]) > 100)):
-        print("Introduce un número entre 40 y 100")
+        print("Introduce un número entre 45 y 100")
         information = interfazCreation()
     
     
@@ -52,7 +52,7 @@ Funcion encargada de leer el archivo de datos y realizar el agrupamiento
 sobre sus datos
 '''
 def realDataset():
-    datasets = ["Songs", "Corona", "Both"]
+    datasets = ["Songs", "Corona"]
     dataset = datasets[1]
     
     if(dataset == "Songs"):
@@ -65,30 +65,23 @@ def realDataset():
         df = preprocessCorona(df)
         realClustering2(df.iloc[:10000, :])
         
-    else:
-        df1 = readFile("Datasets/Canciones.csv")
-        df1 = preprocessSongs(df1)
-        realClustering1(df1)
-        df2 = readFile("Datasets/Corona.csv")
-        df2 = preprocessCorona(df2)
-        realClustering2(df2)
     
     
     
-
+'''
+Funcion principal del proyecto
+'''
 def main():
-    modes = ["Real Datasets", "Experiments", "Both"]
-    mode = modes[0]
+    modes = ["Real Datasets", "Experiment"]
+    mode = modes[1]
 
     
 
     if(mode == "Real Datasets"):
         realDataset()
-    elif(mode == "Experiments"):
-        experiments()
-    else:
-        realDataset()
-        experiments()
+    elif(mode == "Experiment"):
+        experiment()
+    
 
 
 

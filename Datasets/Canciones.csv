@@ -8,7 +8,7 @@ I Don't Care (with Justin Bieber);Ed Sheeran;pop;102;46;57;-5;9;84;220;9;59;90
 Ransom;Lil Tecca;rap;180;77;9;-6;47;23;131;2;29;10
 How Do You Sleep?;Sam Smith;pop;111;47;48;-5;8;35;202;15;36;23
 Old Town Road - Remix;Lil Nas X;rap;136;79;11;-6;55;64;157;5;10;7
-bad guy;Billie Eilish;electronica;135;80;31;-11;66;56;194;33;38;95
+bad guy;Billie Eilish;electronica;135;85;26;-11;66;56;194;33;30;95
 Callaita;Bad Bunny;reggaeton;176;82;83;-5;24;24;251;60;31;93
 Loco Contigo (feat. J. Balvin & Tyga);DJ Snake;pop latino;96;66;79;-4;9;38;185;28;7;86
 Someone You Loved;Lewis Capaldi;pop;110;30;50;-6;11;45;182;75;37;88
@@ -20,13 +20,13 @@ Sunflower - Spider-Man: Into the Spider-Verse;Post Malone;rap;90;77;16;-6;80;91;
 Lalala;Y2K;hip hop;130;82;84;-8;70;50;161;18;8;3
 Truth Hurts;Lizzo;otros;158;62;21;-3;12;41;173;11;11;11
 Piece Of Your Heart;MEDUZA;pop;124;33;26;-7;7;63;153;4;25;31
-Panini;Lil Nas X;rap;154;75;4;-6;66;48;115;34;8;9
+Panini;Lil Nas X;rap;154;75;4;-6;66;22;115;34;8;9
 No Me Conoce - Remix;Jhay Cortez;reggaeton;92;79;81;-4;9;58;309;14;7;83
 Soltera - Remix;Lunay;reggaeton;92;78;80;-4;44;80;266;36;4;91
 bad guy (with Justin Bieber);Billie Eilish;electronica;135;90;22;-11;70;68;195;25;30;89
 If I Can't Have You;Shawn Mendes;pop;124;31;46;-4;13;87;191;49;27;65
 Dance Monkey;Tones and I;pop;98;37;58;-6;18;54;210;69;33;83
-It's You;Ali Gatie;hip hop;96;71;73;-7;59;40;213;37;3;5
+It's You;Ali Gatie;hip hop;96;71;73;-7;59;10;213;37;3;5
 Con Calma;Daddy Yankee;reggaeton;94;86;74;-3;6;66;193;11;6;91
 QUE PRETENDES;J Balvin;reggaeton;93;79;64;-4;36;94;222;3;25;89
 Takeaway;The Chainsmokers;electronica;85;86;9;-8;58;36;210;12;4;84
@@ -44,10 +44,10 @@ You Need To Calm Down;Taylor Swift;pop;85;40;40;-6;7;73;171;1;30;71
 Shallow;Lady Gaga;pop;96;39;22;-6;23;32;216;37;27;63
 Talk;Khalid;pop;136;40;47;-9;6;35;198;5;26;33
 Con Altura;ROSALÕA;otros;98;69;62;-4;5;75;162;39;12;88
-One Thing Right;Marshmello;electronica;88;90;40;-2;58;44;182;7;5;88
+One Thing Right;Marshmello;electronica;88;90;40;-2;68;44;182;7;5;88
 Te Robaré;Nicky Jam;pop latino;176;75;67;-4;8;80;202;24;6;88
 Happier;Marshmello;electronica;100;88;23;-3;91;67;214;19;5;88
-Call You Mine;The Chainsmokers;otros;104;70;30;-6;41;50;218;23;3;88
+Call You Mine;The Chainsmokers;otros;104;70;30;-6;41;50;218;23;3;77
 Cross Me (feat. Chance the Rapper & PnB Rock);Ed Sheeran;pop;95;27;20;-6;7;61;206;21;26;36
 Calypso;Luis Fonsi;pop latino;110;84;86;-4;37;93;200;16;6;88
 Dakiti;Bad bunny;reggaeton;95;86;77;-7;13;51;163;14;5;85
@@ -55,8 +55,8 @@ Por el bulebar de los Sueños rotos;Sabina;otros;127;66;19;-7;36;75;238;29;5;54
 Lo niego todo;Sabina;otros;77;58;13;-7;13;35;280;72;4;29
 Besos en guerra;Morat;pop latino;144;97;46;-3;10;77;231;13;5;89
 Ingobernable;C.Tangan;otros;105;76;49;-6;7;74;187;20;7;64
-Nosotros;Natos y warrios;rap;85;76;10;-5;57;49;263;18;7;9
-Zinedine;Ayas y prok;rap;96;77;7;-9;48;85;127;3;47;10
+Nosotros;Natos y warrios;rap;85;76;10;-5;57;19;263;18;7;9
+Zinedine;Ayas y prok;rap;96;77;7;-9;48;21;127;3;47;10
 Pareja del año;Sebastian Yatra;pop latino;80;62;72;-5;9;81;195;16;5;66
 911;Sech;reggaeton;93;79;80;-4;30;74;215;8;4;60
 Cuando te fuiste;Aitana;pop latino;160;83;59;-3;94;54;167;1;8;62
@@ -77,3 +77,19 @@ Waiting for love;Avicii;electronica;128;74;33;-4;76;61;230;31;5;48
 Shape of You;Ed Sheeran;pop;96;27;36;-3;9;9;233;8;40;65
 Despacito (Featuring Daddy Yankee);Luis Fonsi;pop latino;178;63;75;-5;7;11;229;20;20;100
 Lose yourself;Eminen;rap;171;80;12;-5;60;6;320;1;27;13
+Ayer la vi;Don Omar;reggaeton;94;74;80;-8;16;77;252;28;5;66
+Limbo;Daddy Yankee;reggaeton;125;88;81;-4;6;92;224;8;9;62
+Pegate Mas;Juan Magan;reggaeton;132;86;72;-7;22;80;192;1;9;55
+Mayor que yo 3;Luny Tunes;reggaeton;92;96;72;-3;29;54;304;10;29;58
+Tumba la casa;Musicologo;electronica;83;69;29;-6;71;62;242;6;6;28
+Caile;Bad Bunny;reggaeton;130;70;77;-2;7;55;299;17;6;50
+Sueltate el debow;Big Yamo;otros;95;71;94;-5;7;97;198;13;5;12
+Bailando;Enrique Iglesias;pop latino;91;75;72;-4;5;96;243;4;11;51
+El taxi;Pitbull;pop latino;95;69;87;-7;10;88;249;12;19;45
+El perdón;Enrique Iglesias;pop latino;180;69;63;-6;11;66;205;45;5;70
+El amante;Nicky Jam;pop latino;180;69;68;-6;14;73;219;24;4;51
+Como te atreves;Morat;pop latino;131;89;62;-5;16;77;240;7;4;83
+La bicicleta;Carlos Vives;pop latino;180;94;74;-4;33;95;229;21;13;76
+La gozadera;Gente de Zona;pop latino;95;95;62;-3;22;92;203;30;4;77
+Dragon ball rap;Porta;rap;110;80;11;-2;59;29;119;22;40;30
+Palabras;Nach;rap;91;84;6;-5;49;13;181;32;21;8

@@ -11,6 +11,11 @@ from sklearn import metrics
 import plotly.graph_objects as go
 import numpy as np
 from astropy.table import Table
+from lightgbm import LGBMClassifier
+from sklearn.model_selection import cross_val_score
+import numpy as np
+import re
+import shap
 
 
 
@@ -54,7 +59,7 @@ Función encargada de devolver los mejores parámetros aplicando el coeficiente
 de shiloutte y DB
 '''
 def scoreFunction(puntos, nombre, cluster, distancia = 0,  **kwargs):
-    MAX_CLUSTERS = 6
+    MAX_CLUSTERS = 8
     MAX_ROWS = 0
     max_score = -99999
     max_sil = -99999
@@ -77,12 +82,23 @@ def scoreFunction(puntos, nombre, cluster, distancia = 0,  **kwargs):
     elif(nombre == "OPTICS"):
         MAX_ROWS = 5
         for i in range(2, MAX_ROWS):
-            optics = cluster(xi= (i*distancia), **kwargs).fit(puntos)
+            optics = cluster(max_eps = (i*distancia), **kwargs).fit(puntos)
             labels = optics.labels_
             column_name = 'Max epsilon value'
             
             max_sil, max_db, max_score, better_clus_number, score_sil_lis, score_db_lis = updateMax(
                 puntos, labels, max_score, i, max_sil, max_db, better_clus_number, score_sil_lis, score_db_lis)
+    
+    elif(nombre == "MeanShift"):
+        MAX_ROWS = 4
+        for i in range(2, MAX_ROWS):
+            meanShift = cluster(bandwidth= (i*distancia), **kwargs).fit(puntos)
+            labels = meanShift.labels_
+            column_name = 'Bandwidth'
+            max_sil, max_db, max_score, better_clus_number, score_sil_lis, score_db_lis = updateMax(
+                puntos, labels, max_score, i, max_sil, max_db, better_clus_number, score_sil_lis, score_db_lis)
+            
+    
     else:
         MAX_ROWS = MAX_CLUSTERS
         for i in range(2,MAX_CLUSTERS):
@@ -98,10 +114,7 @@ def scoreFunction(puntos, nombre, cluster, distancia = 0,  **kwargs):
                 kmedoids = cluster(n_clusters=i, **kwargs).fit(puntos)
                 labels = kmedoids.labels_
                 column_name = 'Number Clus'
-            elif(nombre == "MeanShift"):
-                meanShift = cluster(bandwidth= (i*distancia), **kwargs).fit(puntos)
-                labels = meanShift.labels_
-                column_name = 'Bandwidth'
+            
             elif(nombre == "Spectral"):
                 spectral = cluster(n_clusters = i, **kwargs).fit(puntos)
                 labels = spectral.labels_
@@ -121,3 +134,27 @@ def scoreFunction(puntos, nombre, cluster, distancia = 0,  **kwargs):
         
  
     return max_sil, max_db, better_clus_number
+
+
+
+
+
+
+
+
+def f1_score(datos, clusters):
+    
+    datos = datos.drop(columns = ['Genre'])
+    datos = datos.rename(columns = lambda x:re.sub('[^A-Za-z0-9_]+', '', x))
+    clf_kp = LGBMClassifier(colsample_by_tree=0.7)
+    cv_scores_kp = cross_val_score(clf_kp, datos, clusters, scoring='f1_weighted')
+    print(f'CV F1 score clustering is {np.min(cv_scores_kp)}')
+    
+    if(len(np.unique(np.array(clusters))) < 3):
+        return 0
+    else:
+        return np.min(cv_scores_kp)
+    
+    
+    
+    

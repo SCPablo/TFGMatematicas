@@ -7,7 +7,7 @@ Created on Sun Aug  1 20:21:21 2021
 """
 
 from sklearn.cluster import KMeans
-from silhoutte import scoreFunction
+from silhoutte import scoreFunction, f1_score
 from time import time
 from plotResults import plotResultsGrafics, plotResultTable, reduceDimension
 
@@ -22,7 +22,7 @@ def eKmeans(puntos):
     t0 = time()
     clustering = clustering.fit(puntos)
     
-    print("El número óptimo de puntos es: " + str(n_clus))
+    print("El número óptimo de clústeres es: " + str(n_clus))
     print("En calcular la agrupación ha tardado %.2fs" % ( time() - t0))
     print("Su coeficiente de silhoutte es: " + str(sil_sco))
     print("Su coeficiente de Davies Boulding es: " + str(db_sco))
@@ -43,12 +43,17 @@ def rKmeans1(datos):
     t0 = time()
     clustering = clustering.fit(datos.iloc[:,3:])
     
-    print("El número óptimo de puntos es: " + str(n_clus))
+    
+    valorF = f1_score(datos.iloc[:,2:], clustering.labels_)
+    
+    print("El número óptimo de clústeres es: " + str(n_clus))
     print("En calcular la agrupación ha tardado %.2fs" % ( time() - t0))
     print("Su coeficiente de silhoutte es: " + str(sil_sco))
     print("Su coeficiente de Davies Boulding es: " + str(db_sco))
     print("\n\n\n")
     plotResultTable(datos, clustering, "KMEANS")
+    
+    return valorF
     
     
     
@@ -64,7 +69,7 @@ def rKmeans2(datos):
     t0 = time()
     clustering = clustering.fit(datos)
     
-    print("El número óptimo de puntos es: " + str(n_clus))
+    print("El número óptimo de clústeres es: " + str(n_clus))
     print("En calcular la agrupación ha tardado %.2fs" % ( time() - t0))
     print("Su coeficiente de silhoutte es: " + str(sil_sco))
     print("Su coeficiente de Davies Boulding es: " + str(db_sco))

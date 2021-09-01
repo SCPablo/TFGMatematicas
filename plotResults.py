@@ -40,8 +40,8 @@ def plotResultsGrafics(puntos, clustering, name):
                    loc='upper center', bbox_to_anchor=(0.5, -0.05), ncol=9)
     
     
+    plt.savefig("images/Experimento Personalizado/" + name)
 
-    
     plt.show()
 
 
@@ -93,7 +93,7 @@ def plotResultTable(datos, clusters, algorithm):
     )
     
     fig.update_layout(width=500, height=1300, title =  algorithm)
-    fig.write_html("images/" + "Clustering " + algorithm + ".html")
+    fig.write_html("images/Songs/" + "Clustering " + algorithm + ".html")
     fig.show()
     
     
@@ -101,8 +101,11 @@ def plotResultTable(datos, clusters, algorithm):
     
     
 def drawHeatMap(datos):
-    sns.heatmap(datos.corr(), linewidths=.2,
+    sns_plot = sns.heatmap(datos.corr(), linewidths=.2,
                 cmap="YlOrRd")
+    fig = sns_plot.get_figure()
+    fig.savefig("images/Songs/HeatMap.png")
+    #sns.plt.show()
     
     
 
@@ -131,10 +134,59 @@ def reduceDimension(datos, clusters, titulo):
     plt.gca().set_aspect('equal', 'datalim')
     plt.colorbar().set_ticks(np.unique(clusters))
     plt.title('UMAP ' + titulo, fontsize=14);
+    plt.xticks([])
+    plt.yticks([])
+    plt.savefig("images/Corona/" + titulo + ".png")
     plt.show()
+    
+    
+
+
+def printValoresF(valores):
+    fig = make_subplots(
+    rows=2, cols=1,
+    shared_xaxes=True,
+    vertical_spacing=0.03,
+    specs=[[{"type": "table"}],
+           [{"type": "table"}]]
+    )
+    algoritmos = ["Agglomerative", "KMeans", "KMedoids", "MeanShift",
+                    "DBSCAN", "OPTICS", "SPECTRAL"]
+    
+    fig.add_trace(
+    go.Table(
+        columnwidth = [60,30],
+        header=dict(
+            values=[['<b>Algoritmo</b>'], ['<b>Valor</b>']]
+        ),
+        cells=dict(
+            values=[algoritmos, valores],
+            align = "left")
+    ),
+    row=1, col=1
+    )
+    
+    fig.update_layout(width=500, height=1300, title =  "Valores-F")
+    fig.write_html("images/Songs/" + "Valores-F.html")
+    fig.show()
     
 
 
 
+def reduceDimensionInitial(datos, titulo):
+    reducer = umap.UMAP(random_state=42)
+    
+    numeric_numpy = datos.to_numpy()
+    embedding = reducer.fit_transform(numeric_numpy)
+    
+    x = pd.DataFrame(data={'x_axis':embedding[:, 0]})
+    y = pd.DataFrame(data={'y_axis':embedding[:, 1]})
+    
+    plt.scatter(x, y, cmap='YlOrRd')
+    plt.gca().set_aspect('equal', 'datalim')
+    plt.title('UMAP ' + titulo, fontsize=14);
+    plt.xticks([])
+    plt.yticks([])
+    plt.show()
 
     

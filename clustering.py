@@ -18,7 +18,7 @@ from OPTICS import eOptics, rOptics1, rOptics2
 from Espectral import eSpectral, rSpectral1, rSpectral2
 from sklearn.preprocessing import MinMaxScaler
 import pandas as pd
-from plotResults import drawHeatMap
+from plotResults import drawHeatMap, printValoresF, reduceDimensionInitial
 
 
 
@@ -76,16 +76,19 @@ Función encargada de llamar a los algoritmos de clustering
 '''    
 def realClustering1(datos):
     
-    rAgglomerativeClustering1(datos)
-    rKmeans1(datos)
-    rKmedoids1(datos)
-    #rMeanShift1(datos)
-    rDbscan1(datos)
-    rOptics1(datos)
-    rSpectral1(datos)
+    drawHeatMap(datos.iloc[:, 3:])
+    
+    valoresF = []
+    valoresF.append(round(rAgglomerativeClustering1(datos),2))
+    valoresF.append(round(rKmeans1(datos), 2))
+    valoresF.append(round(rKmedoids1(datos), 2))
+    valoresF.append(round(rMeanShift1(datos), 2))
+    valoresF.append(round(rDbscan1(datos), 2))
+    valoresF.append(round(rOptics1(datos), 2))
+    valoresF.append(round(rSpectral1(datos), 2))
     
     
-    
+    printValoresF(valoresF)
     
 
 
@@ -93,9 +96,8 @@ def realClustering1(datos):
 
 def realClustering2(datos):
     
-    #drawHeatMap(datos.iloc[:, :9])
-    
-
+    drawHeatMap(datos.iloc[:, :9])
+    reduceDimensionInitial(datos, "Original")
     
     rAgglomerativeClustering2(datos)
     rKmeans2(datos)
